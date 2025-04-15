@@ -28,13 +28,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
-vim.api.nvim_create_autocmd('TextYankPost', {
-  group = augroup 'highlight_yank',
-  callback = function()
-    (vim.hl or vim.highlight).on_yank()
-  end,
-})
-
 vim.api.nvim_create_autocmd('FileType', {
   group = augroup 'close_with_q',
   pattern = {

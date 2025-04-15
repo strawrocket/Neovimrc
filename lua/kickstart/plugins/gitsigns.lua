@@ -6,6 +6,16 @@ return {
   {
     'lewis6991/gitsigns.nvim',
     opts = {
+      signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+      },
+      signcolumn = true,
+      current_line_blame_formatter = '<author>, <summary>',
+      current_line_blame = true,
       on_attach = function(bufnr)
         local gitsigns = require 'gitsigns'
 

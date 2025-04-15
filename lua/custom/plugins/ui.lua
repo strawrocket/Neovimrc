@@ -20,10 +20,10 @@ return {
       require('lualine').setup {
         options = {
           icons_enabled = true,
-          theme = 'molokai',
+          theme = 'moonfly',
           component_separators = { left = '|', right = '|' },
           section_separators = { left = '', right = '' },
-          disabled_filetypes = {
+          disabled_filetpes = {
             statusline = {},
             winbar = {},
           },
@@ -42,18 +42,18 @@ return {
             'mode',
             {
               'fileformat',
-              symbols = {
-                unix = '', -- e712
-                dos = '', -- e70f
-                mac = '', -- e711
-              },
+              -- symbols = {
+              --   unix = '', -- e712
+              --   dos = '', -- e70f
+              --   mac = '', -- e711
+              -- },
             },
           },
           lualine_b = { 'branch', 'diff', 'diagnostics' },
           lualine_c = { 'filename', 'navic' },
           lualine_x = { 'encoding', 'fileformat', 'filetype' },
           lualine_y = { 'progress' },
-          lualine_z = { 'location' },
+          lualine_z = { 'location', require('recorder').recordingStatus },
         },
         inactive_sections = {
           lualine_a = {},

@@ -6,8 +6,15 @@ return {
       -- delay between pressing a key and opening which-key (milliseconds)
       -- this setting is independent of vim.opt.timeoutlen
       delay = 0,
+      layout = {
+        height = { min = 3, max = 25 }, -- min and max height of the columns
+        width = { min = 20, max = 100 }, -- min and max width of the columns
+        spacing = 5, -- spacing between columns
+        align = 'center', -- align columns left, center or right
+      },
+
+      sort = { 'order' },
       icons = {
-        sort = { 'order' },
         icons = {
           mappings = true,
           rules = {
@@ -90,9 +97,17 @@ return {
       spec = {
         { '<leader>s', group = 'search' },
         { '<leader>t', group = 'Toggle' },
+        { '<leader>b', group = 'Buffer' },
+        { '<leader>d', group = 'Debug' },
+        { '<leader>a', group = 'Harpoon', icon = { icon = '', color = 'red' } },
         { '<leader>h', group = 'Git Hunk', mode = { 'n', 'v' } },
-        { '<leader>u', group = 'Ui', mode = 'n' },
+        { '<leader>g', group = 'Git', mode = { 'n', 'v' } },
+        { '<leader>u', group = 'Undo', mode = 'n' },
         { '<leader>x', group = 'Trouble', mode = 'n' },
+        { '<leader>c', group = 'Code', mode = 'n' },
+        { '<leader>q', group = 'Session' },
+        { '<leader>n', group = 'navbuddy', icon = { icon = '', color = 'green' } },
+        { '<leader>x', group = 'trouble', icon = { icon = '󱖫 ', color = 'green' } },
       },
     },
   },

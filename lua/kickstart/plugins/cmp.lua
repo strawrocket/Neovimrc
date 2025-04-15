@@ -5,6 +5,9 @@ return { -- Autocompletion
   dependencies = {
     -- Snippet Engine
     {
+      'giuxtaposition/blink-cmp-copilot',
+    },
+    {
       'L3MON4D3/LuaSnip',
       version = '2.*',
       build = (function()
@@ -57,6 +60,7 @@ return { -- Autocompletion
       --
       -- See :h blink-cmp-config-keymap for defining your own keymap
       preset = 'default',
+      ['<C-;>'] = { 'select_and_accept' },
 
       -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
       --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -75,9 +79,21 @@ return { -- Autocompletion
     },
 
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'lazydev' },
+      default = { 'lsp', 'path', 'snippets', 'lazydev', 'copilot', 'cmdline' },
       providers = {
         lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+        copilot = {
+          name = 'copilot',
+          module = 'blink-cmp-copilot',
+          score_offset = 100,
+          async = true,
+        },
+        cmdline = {
+          -- ignores cmdline completions when executing shell commands
+          enabled = function()
+            return vim.fn.getcmdtype() ~= ':' or not vim.fn.getcmdline():match "^[%%0-9,'<>%-]*!"
+          end,
+        },
       },
     },
 
