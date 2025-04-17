@@ -153,6 +153,7 @@ return {
       -- these must match the keys in the mapping config below
       { 'q', desc = ' Start Recording' },
       { 'Q', desc = ' Play Recording' },
+      { 'dq', desc = ' Delete All Macros' },
     },
     config = function()
       require('recorder').setup {
@@ -163,7 +164,7 @@ return {
           deleteAllMacros = 'dq',
         },
         useNerdfontIcons = true,
-        lessNotifications = true,
+        lessNotifications = false,
       }
 
       local lualineZ = require('lualine').get_config().sections.lualine_z or {}

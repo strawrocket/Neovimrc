@@ -1,14 +1,17 @@
 return {
   {
     'tpope/vim-fugitive',
+    keys = {
+      { '<leader>gs', '<cmd>Git<CR>', desc = 'Fugitive' },
+      { '<leader>p', '<cmd>Git push<CR>', desc = 'Push' },
+      { '<leader>P', '<cmd>Git pull --rebase<CR>', desc = 'Pull with rebase' },
+      { '<leader>t', ':Git push -u origin ', desc = 'Set tracking branch' },
+    },
     config = function()
       vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
 
-      local ThePrimeagen_Fugitive = vim.api.nvim_create_augroup('ThePrimeagen_Fugitive', {})
-
       local autocmd = vim.api.nvim_create_autocmd
       autocmd('BufWinEnter', {
-        group = ThePrimeagen_Fugitive,
         pattern = '*',
         callback = function()
           if vim.bo.ft ~= 'fugitive' then
