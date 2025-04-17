@@ -2,10 +2,10 @@ return {
   {
     'tpope/vim-fugitive',
     keys = {
-      { '<leader>gs', '<cmd>Git<CR>', desc = 'Fugitive' },
-      { '<leader>p', '<cmd>Git push<CR>', desc = 'Push' },
-      { '<leader>P', '<cmd>Git pull --rebase<CR>', desc = 'Pull with rebase' },
-      { '<leader>t', ':Git push -u origin ', desc = 'Set tracking branch' },
+      { '<leader>gs', '<cmd>Git<CR>', desc = 'Git Fugitive' },
+      { '<leader>p', '<cmd>Git push<CR>', desc = 'Git Push' },
+      { '<leader>P', '<cmd>Git pull --rebase<CR>', desc = 'Git Pull + rebase' },
+      { '<leader>gt', ':Git push -u origin ', desc = 'Set tracking branch' },
     },
     config = function()
       vim.keymap.set('n', '<leader>gs', vim.cmd.Git)

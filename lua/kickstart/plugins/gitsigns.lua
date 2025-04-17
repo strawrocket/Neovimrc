@@ -15,7 +15,7 @@ return {
       },
       signcolumn = true,
       current_line_blame_formatter = '<author>, <summary>',
-      current_line_blame = true,
+      current_line_blame = false,
       on_attach = function(bufnr)
         local gitsigns = require 'gitsigns'
 

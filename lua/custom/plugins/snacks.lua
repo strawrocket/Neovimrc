@@ -57,7 +57,7 @@ return {
       words = { enabled = false },
       styles = {
         notification = {
-          -- wo = { wrap = true } -- Wrap notifications
+          wo = { wrap = true }, -- Wrap notifications
         },
       },
     },
@@ -132,6 +132,14 @@ return {
           Snacks.lazygit()
         end,
         desc = 'Lazygit',
+      },
+
+      {
+        '<leader>sM',
+        function()
+          Snacks.picker.man()
+        end,
+        desc = 'Search man pages',
       },
 
       -- find
