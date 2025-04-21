@@ -5,7 +5,7 @@ return {
       { '<leader>gs', '<cmd>Git<CR>', desc = 'Git Fugitive' },
       { '<leader>p', '<cmd>Git push<CR>', desc = 'Git Push' },
       { '<leader>P', '<cmd>Git pull --rebase<CR>', desc = 'Git Pull + rebase' },
-      { '<leader>gt', ':Git push -u origin ', desc = 'Set tracking branch' },
+      { '<leader>gt', '<cmd>Git push -u origin<CR>', desc = 'Set tracking branch' },
     },
     config = function()
       vim.keymap.set('n', '<leader>gs', vim.cmd.Git)

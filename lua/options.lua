@@ -15,7 +15,7 @@ vim.g.have_nerd_font = true
 opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- opt.relativenumber = true
+opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 opt.mouse = 'a'
@@ -98,3 +98,4 @@ opt.shiftwidth = 4 -- the number of spaces inserted for each indentation
 opt.tabstop = 4 -- insert 2 spaces for a tab
 opt.numberwidth = 3
 opt.formatoptions:remove 'o'
+opt.laststatus = 3

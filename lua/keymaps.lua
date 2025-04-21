@@ -16,9 +16,6 @@ set('n', '<leader>n', '<cmd>Navbuddy<CR>', { desc = 'Navigation' })
 
 set('n', '<leader>bd', '<cmd>bdelete<CR>', { desc = 'Delete buffer' })
 
--- select all
-set('n', '<C-a>', 'gg<S-v>G', { desc = 'Select all' })
-
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -28,10 +25,10 @@ set('n', '<C-a>', 'gg<S-v>G', { desc = 'Select all' })
 set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- TIP: Disable arrow keys in normal mode
--- set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
-set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
-set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+set('n', '<left>', '<cmd>echo "Use h to move i_dot!!"<CR>')
+set('n', '<right>', '<cmd>echo "Use l to move i_dot!!"<CR>')
+set('n', '<up>', '<cmd>echo "Use k to move i_dot!!"<CR>')
+set('n', '<down>', '<cmd>echo "Use j to move i_dot!!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows

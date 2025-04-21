@@ -212,6 +212,30 @@ return {
       -- But for many setups, the LSP (`ts_ls`) will work just fine
       -- ts_ls = {},
       --
+      pyright = {
+        -- cmd = { 'pyright-langserver', '--stdio' },
+        filetypes = { 'python' },
+        settings = {
+          python = {
+            analysis = {
+              typeCheckingMode = 'basic',
+              autoImportCompletions = true,
+              useLibraryCodeForTypes = true,
+              diagnosticMode = 'workspace',
+            },
+          },
+        },
+      },
+
+      ruff = {
+        -- cmd = { 'ruff-lsp', '--stdio' },
+        filetypes = { 'python' },
+        settings = {
+          ruff = {
+            args = { '--ignore', 'E501' },
+          },
+        },
+      },
 
       lua_ls = {
         -- cmd = { ... },
