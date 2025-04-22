@@ -251,6 +251,24 @@ return {
           },
         },
       },
+
+      marksman = {
+        filetypes = { 'markdown' },
+        settings = {
+          marksman = {
+            diagnostics = {
+              enable = true,
+              lint = true,
+              lintOnSave = true,
+              lintOnChange = true,
+            },
+            completion = {
+              enable = true,
+              autoTrigger = 'always',
+            },
+          },
+        },
+      },
     }
 
     -- Ensure the servers and tools above are installed
