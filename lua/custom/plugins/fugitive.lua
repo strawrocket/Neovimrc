@@ -3,8 +3,8 @@ return {
     'tpope/vim-fugitive',
     keys = {
       { '<leader>gs', '<cmd>Git<CR>', desc = 'Git Fugitive' },
-      { '<leader>p', '<cmd>Git push<CR>', desc = 'Git Push' },
-      { '<leader>P', '<cmd>Git pull --rebase<CR>', desc = 'Git Pull + rebase' },
+      { '<leader>gp', '<cmd>Git push<CR>', desc = 'Git Push' },
+      { '<leader>gP', '<cmd>Git pull --rebase<CR>', desc = 'Git Pull + rebase' },
       { '<leader>gt', '<cmd>Git push -u origin<CR>', desc = 'Set tracking branch' },
     },
     config = function()

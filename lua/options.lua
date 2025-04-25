@@ -68,8 +68,7 @@ opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 -- Preview substitutions live, as you type!
 opt.inccommand = 'split'
 
--- Show which line your cursor is on
-opt.cursorline = true
+-- Show which line your cursor is on opt.cursorline = true
 opt.colorcolumn = '80'
 
 -- Minimal number of screen lines to keep above and below the cursor.
@@ -92,10 +91,11 @@ opt.fillchars = {
   diff = '╱',
   eob = ' ',
 }
---
-opt.expandtab = true -- convert tabs to spaces
+opt.expandtab = false -- convert tabs to spaces
 opt.shiftwidth = 4 -- the number of spaces inserted for each indentation
 opt.tabstop = 4 -- insert 2 spaces for a tab
-opt.numberwidth = 3
+opt.smarttab = true
 opt.formatoptions:remove 'o'
 opt.laststatus = 3
+opt.wrap = false
+opt.termguicolors = true

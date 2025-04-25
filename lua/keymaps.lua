@@ -9,11 +9,9 @@ set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostic keymaps
 -- set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code action' })
-
 set('n', '<leader>cr', vim.lsp.buf.rename, { desc = 'Code action' })
 
 set('n', '<leader>n', '<cmd>Navbuddy<CR>', { desc = 'Navigation' })
-
 set('n', '<leader>bd', '<cmd>bdelete<CR>', { desc = 'Delete buffer' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
@@ -23,6 +21,10 @@ set('n', '<leader>bd', '<cmd>bdelete<CR>', { desc = 'Delete buffer' })
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+-- split windows
+set('n', '<leader>\\', ':vsplit<CR>', { desc = 'Split window vertically' })
+set('n', '<leader>-', ':split<CR>', { desc = 'Split window horizontally' })
 
 -- TIP: Disable arrow keys in normal mode
 set('n', '<left>', '<cmd>echo "Use h to move i_dot!!"<CR>')
