@@ -20,8 +20,13 @@ return {
   },
   {
     'CopilotC-Nvim/CopilotChat.nvim',
+    dependencies = {
+      { 'zbirenbaum/copilot.lua' }, -- or zbirenbaum/copilot.lua
+      { 'nvim-lua/plenary.nvim', branch = 'master' }, -- for curl, log and async functions
+    },
     branch = 'main',
     cmd = 'CopilotChat',
+    build = 'make tiktoken',
     opts = function()
       local user = vim.env.USER or 'User'
       user = user:sub(1, 1):upper() .. user:sub(2)
@@ -29,6 +34,7 @@ return {
         auto_insert_mode = true,
         question_header = '  ' .. user .. ' ',
         answer_header = '  Copilot ',
+        -- model = 'claude-3.7-sonnet',
         window = {
           width = 0.4,
         },
@@ -38,7 +44,7 @@ return {
       { '<c-s>', '<CR>', ft = 'copilot-chat', desc = 'Submit Prompt', remap = true },
       -- { '<leader>a', '', desc = '+ai', mode = { 'n', 'v' } },
       {
-        '<leader>aa',
+        '<leader>at',
         function()
           return require('CopilotChat').toggle()
         end,
