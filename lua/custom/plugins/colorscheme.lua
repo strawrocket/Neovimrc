@@ -9,9 +9,17 @@ return {
   {
     'rose-pine/neovim',
     name = 'rose-pine',
-    -- config = function()
-    --   vim.cmd 'colorscheme rose-pine-main'
-    -- end,
+    config = function()
+      -- ColorMyPencils()
+      require('rose-pine').setup {
+        palette = {
+          main = {
+            base = '#0A0E12',
+          },
+        },
+      }
+      vim.cmd 'colorscheme rose-pine-main'
+    end,
   },
   {
     'scottmckendry/cyberdream.nvim',
@@ -27,7 +35,7 @@ return {
       -- Optionally configure and load the colorscheme
       -- directly inside the plugin declaration.
       vim.g.gruvbox_material_enable_italic = true
-      vim.cmd.colorscheme 'gruvbox-material'
+      -- vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
 }

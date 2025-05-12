@@ -244,4 +244,22 @@ return {
       { '=P', '<Plug>(YankyPutBeforeFilter)', desc = 'Put before applying a filter' },
     },
   },
+  {
+    'danymat/neogen',
+    config = true,
+    -- Uncomment next line if you want to follow only stable versions
+    -- version = "*"
+    opts = {
+      snippet_engine = 'luasnip',
+    },
+    keys = {
+      {
+        '<leader>cn',
+        function()
+          require('neogen').generate()
+        end,
+        desc = 'Generate Annotations (Neogen)',
+      },
+    },
+  },
 }
