@@ -18,6 +18,7 @@ return {
       dependencies = {
         'SmiteshP/nvim-navic',
         'MunifTanjim/nui.nvim',
+        'numToStr/Comment.nvim',
       },
       opts = { lsp = { auto_attach = true } },
     },
