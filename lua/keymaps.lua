@@ -13,7 +13,7 @@ set('n', '<leader>cr', vim.lsp.buf.rename, { desc = 'Code action' })
 
 set('n', '<leader>n', '<cmd>Navbuddy<CR>', { desc = 'Navigation' })
 set('n', '<leader>bd', '<cmd>bdelete<CR>', { desc = 'Delete buffer' })
-
+set('n', '\\', '<cmd>Ex<CR>', { desc = 'Delete buffer' })
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
