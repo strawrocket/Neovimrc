@@ -2,13 +2,13 @@ return {
   {
     'tpope/vim-fugitive',
     keys = {
-      { '<leader>gs', '<cmd>Git<CR>', desc = 'Git Fugitive' },
+      { '<leader>gF', '<cmd>Git<CR>', desc = 'Git Fugitive' },
       { '<leader>gp', '<cmd>Git push<CR>', desc = 'Git Push' },
       { '<leader>gP', '<cmd>Git pull --rebase<CR>', desc = 'Git Pull + rebase' },
       { '<leader>gt', '<cmd>Git push -u origin<CR>', desc = 'Set tracking branch' },
     },
     config = function()
-      vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
+      vim.keymap.set('n', '<leader>gsf', vim.cmd.Git)
 
       local autocmd = vim.api.nvim_create_autocmd
       autocmd('BufWinEnter', {
