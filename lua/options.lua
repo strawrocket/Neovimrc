@@ -99,3 +99,13 @@ opt.formatoptions:remove 'o'
 opt.laststatus = 3
 opt.wrap = false
 opt.termguicolors = true
+
+if vim.g.neovide then
+  -- Neovide configuration to disable animations
+  vim.g.neovide_cursor_animation_length = 0 -- Disable cursor animation
+  vim.g.neovide_cursor_trail_length = 0 -- Disable cursor trail
+  vim.g.neovide_cursor_vfx_mode = '' -- Turn off any special cursor visual effects
+
+  -- Set the GUI font to JetBrains Mono NF with a designated size (e.g., 14)
+  vim.opt.guifont = 'JetBrainsMono Nerd Font:h16'
+end

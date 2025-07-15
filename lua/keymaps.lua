@@ -46,3 +46,7 @@ set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 -- set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
 -- set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
+--
+set('v', '<leader>ul', "<cmd>lua vim.cmd([[silent '<,'>s/^/- /]])<CR>", { desc = 'Unordered list' })
+
+set('v', '<leader>ol', "<cmd>lua vim.cmd([[silent '<,'>g/^/let i=1 | s/^/\\=i.'. ' | let i=i+1]])<CR>", { desc = 'Ordered list' })
