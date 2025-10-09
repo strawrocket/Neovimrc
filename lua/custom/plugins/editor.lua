@@ -140,7 +140,7 @@ return {
     keys = {
       { 'm', mode = { 'n', 'x' }, desc = 'Set mark' },
       { '`', mode = { 'n', 'x' }, desc = 'Jump to mark' },
-      { 'md', mode = { 'n', 'x' }, desc = 'Delete mark' },
+      { 'dm', mode = { 'n', 'x' }, desc = 'Delete mark' },
       { 'm-', mode = { 'n', 'x' }, desc = 'Jump to last mark' },
       { 'dm<space>', mode = { 'n', 'x' }, desc = 'Delete all marks' },
     },
@@ -162,22 +162,23 @@ return {
           startStopRecording = 'q',
           playMacro = 'Q',
           deleteAllMacros = 'dq',
+          editMacro = 'cq',
         },
         useNerdfontIcons = true,
         lessNotifications = false,
       }
 
-      local lualineZ = require('lualine').get_config().sections.lualine_z or {}
-      local lualineY = require('lualine').get_config().sections.lualine_y or {}
-      table.insert(lualineZ, { require('recorder').recordingStatus })
-      table.insert(lualineY, { require('recorder').displaySlots })
-
-      require('lualine').setup {
-        tabline = {
-          lualine_y = lualineY,
-          lualine_z = lualineZ,
-        },
-      }
+      -- local lualineZ = require('lualine').get_config().sections.lualine_z or {}
+      -- local lualineY = require('lualine').get_config().sections.lualine_y or {}
+      -- table.insert(lualineZ, { require('recorder').recordingStatus })
+      -- table.insert(lualineY, { require('recorder').displaySlots })
+      --
+      -- require('lualine').setup {
+      --   tabline = {
+      --     lualine_y = lualineY,
+      --     lualine_z = lualineZ,
+      --   },
+      -- }
     end,
   },
   {
@@ -191,7 +192,7 @@ return {
     -- { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
     { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
     { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-    { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+    { "<c-d>", mode = { "n", "x", "c"}, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
   },
   {
@@ -201,12 +202,12 @@ return {
       local harpoon = require 'harpoon'
       harpoon:setup()
 
-      vim.keymap.set('n', '<leader>aa', function()
+      vim.keymap.set('n', '<leader>ha', function()
         harpoon:list():add()
-      end, { desc = 'Add file' })
-      vim.keymap.set('n', '<leader>al', function()
+      end, { desc = 'Harpoon Add file' })
+      vim.keymap.set('n', '<leader>hl', function()
         harpoon.ui:toggle_quick_menu(harpoon:list())
-      end, { desc = 'List files' })
+      end, { desc = 'Harpoon List files' })
 
       -- Set <space>1..<space>5 be my shortcuts to moving to the files
       for _, idx in ipairs { 1, 2, 3, 4, 5 } do
@@ -244,6 +245,7 @@ return {
       { '=P', '<Plug>(YankyPutBeforeFilter)', desc = 'Put before applying a filter' },
     },
   },
+
   {
     'danymat/neogen',
     config = true,
@@ -271,11 +273,11 @@ return {
         right_pad = 1,
       },
       heading = {
-        sign = false,
+        sign = true,
         icons = {},
       },
       checkbox = {
-        enabled = false,
+        enabled = true,
       },
     },
     ft = { 'markdown', 'norg', 'rmd', 'org', 'codecompanion' },
@@ -296,5 +298,12 @@ return {
         end,
       }):map '<leader>um'
     end,
+  },
+  {
+    'm4xshen/hardtime.nvim',
+    lazy = false,
+    enabled = false,
+    dependencies = { 'MunifTanjim/nui.nvim' },
+    opts = {},
   },
 }

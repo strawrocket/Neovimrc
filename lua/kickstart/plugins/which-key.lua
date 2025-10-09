@@ -15,9 +15,8 @@ return {
 
       sort = { 'order' },
       icons = {
-        icons = {
-          mappings = true,
-          rules = {
+        mappings = vim.g.have_nerd_font,
+        rules = {
             { pattern = 'dashboard', icon = '🦁', color = 'red' },
             { pattern = 'search', icon = ' ', color = 'cyan' },
             { pattern = 'close', icon = '󰅙', color = 'red' },
@@ -25,9 +24,9 @@ return {
             { pattern = 'explorer', icon = '󱏒', color = 'green' },
             { pattern = 'format and save', icon = '󱣪', color = 'green' },
             { pattern = 'save', icon = '󰆓', color = 'green' },
-            { pattern = 'zoom', icon = '', color = 'gray' },
-            { pattern = 'split.*vertical', icon = '󰤼', color = 'gray' },
-            { pattern = 'split.*horizontal', icon = '󰤻', color = 'gray' },
+            { pattern = 'zoom', icon = '', color = 'grey' },
+            { pattern = 'split.*vertical', icon = '󰤼', color = 'grey' },
+            { pattern = 'split.*horizontal', icon = '󰤻', color = 'grey' },
             { pattern = 'lsp', icon = '󰒋', color = 'cyan' },
             { pattern = 'ChatGPT', icon = '󰚩', color = 'azure' },
             { pattern = 'markdown', icon = '', color = 'green' },
@@ -41,26 +40,24 @@ return {
             { pattern = 'blame', icon = '', color = 'yellow' },
             { pattern = 'diff', icon = '', color = 'green' },
             { pattern = 'hunk change', icon = '', color = 'yellow' },
-            { pattern = 'reset', icon = '', color = 'gray' },
+            { pattern = 'reset', icon = '', color = 'grey' },
             { pattern = 'stage', icon = '', color = 'green' },
-            { pattern = { 'Pull', 'Push' }, icon = '', color = 'red' },
-            { pattern = 'undo', icon = '', color = 'gray' },
+            { pattern = 'pull', icon = '', color = 'red' },
+            { pattern = 'push', icon = '', color = 'red' },
+            { pattern = 'undo', icon = '', color = 'grey' },
             { pattern = 'hunk', icon = '󰊢', color = 'red' },
             { pattern = 'harpoon', icon = '', color = 'orange' },
             { pattern = 'branch', icon = '', color = 'red' },
             { pattern = 'commit', icon = '', color = 'green' },
             -- Group [g]
-            { pattern = 'word', icon = '', color = 'gray' },
-            { pattern = 'first line', icon = '', color = 'gray' },
+            { pattern = 'word', icon = '', color = 'grey' },
+            { pattern = 'first line', icon = '', color = 'grey' },
             { pattern = 'comment', icon = '󰅺', color = 'cyan' },
-            { pattern = 'cycle backwards', icon = '󰾹', color = 'gray' },
-            { pattern = 'selection', icon = '󰒉', color = 'gray' },
+            { pattern = 'cycle backwards', icon = '󰾹', color = 'grey' },
+            { pattern = 'selection', icon = '󰒉', color = 'grey' },
             -- Group [<leader>hn]
             { pattern = 'annotation', icon = '󰙆', color = 'cyan' },
           },
-        },
-        -- set icon mappings to true if you have a Nerd Font
-        mappings = vim.g.have_nerd_font,
         -- If you are using a Nerd Font: set icons.keys to an empty table which will use the
         -- default which-key.nvim defined Nerd Font icons, otherwise define a string table
         keys = vim.g.have_nerd_font and {} or {
@@ -110,7 +107,7 @@ return {
         { '<leader>c', group = 'Code', mode = 'n' },
         { '<leader>q', group = 'Session' },
         { '<leader>n', group = 'navbuddy', icon = { icon = '', color = 'green' } },
-        { '<leader>x', group = 'trouble', icon = { icon = '󱖫 ', color = 'green' } },
+
       },
     },
   },

@@ -16,6 +16,7 @@ return {
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
+    enabled = true,
     config = function()
       require('lualine').setup {
         options = {
@@ -63,10 +64,6 @@ return {
           lualine_y = {},
           lualine_z = {},
         },
-        tabline = {},
-        winbar = {},
-        inactive_winbar = {},
-        extensions = {},
       }
     end,
   },
@@ -93,8 +90,8 @@ return {
         options = {
           diagnostics = 'nvim_lsp', -- | "nvim_lsp" | "coc",
           -- separator_style = "", -- | "thick" | "thin" | "slope" | { 'any', 'any' },
-          separator_style = { '', '' }, -- | "thick" | "thin" | { 'any', 'any' },
-          -- separator_style = "slant", -- | "thick" | "thin" | { 'any', 'any' },
+          -- separator_style = { '', '' }, -- | "thick" | "thin" | { 'any', 'any' },
+          separator_style = 'slant', -- | "thick" | "thin" | { 'any', 'any' },
           indicator = {
             -- icon = " ",
             -- style = 'icon'n,
@@ -171,64 +168,23 @@ return {
       require('colorizer').setup()
     end,
   },
-  -- {
-  --   'nanozuki/tabby.nvim',
-  --   dependencies = 'nvim-tree/nvim-web-devicons',
-  --   config = function()
-  --     local theme = {
-  --       -- this is carbonfox theme
-  --       fill = 'TabLineFill',
-  --       head = { fg = '#75beff', bg = '#1c1e26', style = 'italic' },
-  --       current_tab = { fg = '#1c1e26', bg = '#75beff', style = 'italic' },
-  --       tab = { fg = '#c5cdd9', bg = '#1c1e26', style = 'italic' },
-  --       win = { fg = '#1c1e26', bg = '#75beff', style = 'italic' },
-  --       tail = { fg = '#75beff', bg = '#1c1e26', style = 'italic' },
-  --     }
-  --
-  --     require('tabby.tabline').set(function(line)
-  --       return {
-  --         {
-  --           { '  ', hl = theme.head },
-  --           line.sep('', theme.head, theme.fill),
-  --         },
-  --         line.tabs().foreach(function(tab)
-  --           local hl = tab.is_current() and theme.current_tab or theme.tab
-  --
-  --           -- remove count of wins in tab with [n+] included in tab.name()
-  --           local name = tab.name()
-  --           local index = string.find(name, '%[%d')
-  --           local tab_name = index and string.sub(name, 1, index - 1) or name
-  --
-  --           -- indicate if any of buffers in tab have unsaved changes
-  --           local modified = false
-  --           local win_ids = require('tabby.module.api').get_tab_wins(tab.id)
-  --           for _, win_id in ipairs(win_ids) do
-  --             if pcall(vim.api.nvim_win_get_buf, win_id) then
-  --               local bufid = vim.api.nvim_win_get_buf(win_id)
-  --               if vim.api.nvim_buf_get_option(bufid, 'modified') then
-  --                 modified = true
-  --                 break
-  --               end
-  --             end
-  --           end
-  --
-  --           return {
-  --             line.sep('', hl, theme.fill),
-  --             tab_name,
-  --             modified and '',
-  --             line.sep('', hl, theme.fill),
-  --             hl = hl,
-  --             margin = ' ',
-  --           }
-  --         end),
-  --         line.spacer(),
-  --         {
-  --           line.sep('', theme.tail, theme.fill),
-  --           { '  ', hl = theme.tail },
-  --         },
-  --         hl = theme.fill,
-  --       }
-  --     end)
-  --   end,
-  -- },
+  {
+    'rebelot/heirline.nvim',
+    event = 'UIEnter',
+    enabled = false,
+    dependencies = { 'rose-pine/neovim', 'lewis6991/gitsigns.nvim', 'neovim/nvim-lspconfig' },
+    config = function()
+      local ok, heirline = pcall(require, 'heirline')
+      if not ok then
+        print 'Error: Failed to load heirline.nvim'
+        return
+      end
+      local ok_config, config = pcall(require, 'custom.plugins.heirline')
+      if not ok_config or not config.config then
+        print 'Error: Failed to load or find config in custom.plugins.heirline'
+        return
+      end
+      config.config()
+    end,
+  },
 }
