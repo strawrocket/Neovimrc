@@ -119,6 +119,9 @@ return {
 
   {
     'folke/zen-mode.nvim',
+    keys = {
+      { '<leader>z', desc = 'Zen Mode' },
+    },
     config = function()
       vim.keymap.set('n', '<leader>z', function()
         require('zen-mode').setup {
@@ -198,6 +201,15 @@ return {
   {
     'ThePrimeagen/harpoon',
     branch = 'harpoon2',
+    keys = {
+      { '<leader>ha', desc = 'Harpoon Add file' },
+      { '<leader>hl', desc = 'Harpoon List files' },
+      { '<m-1>', desc = 'Harpoon file 1' },
+      { '<m-2>', desc = 'Harpoon file 2' },
+      { '<m-3>', desc = 'Harpoon file 3' },
+      { '<m-4>', desc = 'Harpoon file 4' },
+      { '<m-5>', desc = 'Harpoon file 5' },
+    },
     config = function()
       local harpoon = require 'harpoon'
       harpoon:setup()

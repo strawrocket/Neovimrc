@@ -8,8 +8,9 @@ set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
 -- set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code action' })
-set('n', '<leader>cr', vim.lsp.buf.rename, { desc = 'Code action' })
+-- Defer LSP keymaps until LSP attaches - moved to lsp.lua
+-- set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code action' })
+-- set('n', '<leader>cr', vim.lsp.buf.rename, { desc = 'Code action' })
 
 set('n', '<leader>n', '<cmd>Navbuddy<CR>', { desc = 'Navigation' })
 set('n', '<leader>bd', '<cmd>bdelete<CR>', { desc = 'Delete buffer' })

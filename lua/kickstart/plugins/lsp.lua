@@ -68,6 +68,10 @@ return {
           vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
 
+        -- Add keymaps that were removed from keymaps.lua to avoid loading LSP at startup
+        map('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
+        map('<leader>cr', vim.lsp.buf.rename, 'Rename')
+
         -- Rename the variable under your cursor.
         --  Most Language Servers support renaming across files, etc.
         map('grn', vim.lsp.buf.rename, '[R]e[n]ame')

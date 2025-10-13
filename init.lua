@@ -152,12 +152,16 @@ require('lazy').setup({
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
-      pcall(require('telescope').load_extension, 'yank_history')
+      -- Lazy load yank_history when needed
+      -- pcall(require('telescope').load_extension, 'yank_history')
       pcall(require('telescope').load_extension, 'telescope-ui-select.nvim')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
-      vim.keymap.set('n', '<leader>p', '<CMD>Telescope yank_history<CR>', { desc = 'Yank History' })
+      vim.keymap.set('n', '<leader>p', function()
+        require('telescope').load_extension('yank_history')
+        vim.cmd('Telescope yank_history')
+      end, { desc = 'Yank History' })
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = 'Search [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = 'Search [K]eymaps' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = 'Search [F]iles' })

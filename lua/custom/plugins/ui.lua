@@ -15,6 +15,7 @@ return {
   },
   {
     'nvim-lualine/lualine.nvim',
+    event = 'VeryLazy',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     enabled = true,
     config = function()
@@ -163,6 +164,7 @@ return {
 
   {
     'norcalli/nvim-colorizer.lua',
+    event = 'BufReadPost',
     name = 'colorizer',
     config = function()
       require('colorizer').setup()
