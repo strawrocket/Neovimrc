@@ -202,8 +202,8 @@ return {
     'ThePrimeagen/harpoon',
     branch = 'harpoon2',
     keys = {
-      { '<leader>aa', desc = 'Harpoon Add file' },
-      { '<leader>al', desc = 'Harpoon List files' },
+      { '<leader>ma', desc = 'Harpoon Add file' },
+      { '<leader>ml', desc = 'Harpoon List files' },
       { '<m-1>', desc = 'Harpoon file 1' },
       { '<m-2>', desc = 'Harpoon file 2' },
       { '<m-3>', desc = 'Harpoon file 3' },
@@ -214,10 +214,10 @@ return {
       local harpoon = require 'harpoon'
       harpoon:setup()
 
-      vim.keymap.set('n', '<leader>aa', function()
+      vim.keymap.set('n', '<leader>ma', function()
         harpoon:list():add()
       end, { desc = 'Harpoon Add file' })
-      vim.keymap.set('n', '<leader>al', function()
+      vim.keymap.set('n', '<leader>ml', function()
         harpoon.ui:toggle_quick_menu(harpoon:list())
       end, { desc = 'Harpoon List files' })
 

@@ -42,13 +42,12 @@ return {
     end,
     keys = {
       { '<c-s>', '<CR>', ft = 'copilot-chat', desc = 'Submit Prompt', remap = true },
-      -- { '<leader>a', '', desc = '+ai', mode = { 'n', 'v' } },
       {
-        '<leader>at',
+        '<leader>aT',
         function()
           return require('CopilotChat').toggle()
         end,
-        desc = 'Toggle (CopilotChat)',
+        desc = 'CopilotChat Toggle',
         mode = { 'n', 'v' },
       },
       {
@@ -56,7 +55,7 @@ return {
         function()
           return require('CopilotChat').reset()
         end,
-        desc = 'Clear (CopilotChat)',
+        desc = 'CopilotChat Clear',
         mode = { 'n', 'v' },
       },
       {
@@ -70,15 +69,15 @@ return {
             end
           end)
         end,
-        desc = 'Quick Chat (CopilotChat)',
+        desc = 'CopilotChat Quick Chat',
         mode = { 'n', 'v' },
       },
       {
-        '<leader>ap',
+        '<leader>aP',
         function()
           require('CopilotChat').select_prompt()
         end,
-        desc = 'Prompt Actions (CopilotChat)',
+        desc = 'CopilotChat Prompt Actions',
         mode = { 'n', 'v' },
       },
     },
@@ -121,7 +120,7 @@ return {
       desc = "Goto/Apply Next Edit Suggestion",
     },
     {
-      "<leader>aa",
+      "<leader>ai",
       function() require("sidekick.cli").toggle() end,
       desc = "Sidekick Toggle CLI",
     },
@@ -130,19 +129,19 @@ return {
       function() require("sidekick.cli").select() end,
       -- Or to select only installed tools:
       -- require("sidekick.cli").select({ filter = { installed = true } })
-      desc = "Select CLI",
+      desc = "Sidekick Select CLI",
     },
     {
       "<leader>at",
       function() require("sidekick.cli").send({ msg = "{this}" }) end,
       mode = { "x", "n" },
-      desc = "Send This",
+      desc = "Sidekick Send This",
     },
     {
       "<leader>av",
       function() require("sidekick.cli").send({ msg = "{selection}" }) end,
       mode = { "x" },
-      desc = "Send Visual Selection",
+      desc = "Sidekick Send Visual Selection",
     },
     {
       "<leader>ap",

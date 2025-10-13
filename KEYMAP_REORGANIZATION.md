@@ -2,21 +2,39 @@
 
 ## Problem
 The keymap organization was confusing with overlapping prefixes:
-- `<leader>a` group existed but harpoon used `<leader>h[al]`
+- `<leader>a` group existed but was used by multiple unrelated tools (Harpoon, CopilotChat, Sidekick)
 - `<leader>h` was for Git Hunks (gitsigns)
 - `<leader>g` was for Git commands (fugitive, snacks pickers)
 - Conflicts between git operations in different prefixes
 
 ## Solution
-Consolidated all git operations under `<leader>g` and moved harpoon to `<leader>a`:
+Consolidated keymaps into logical groups:
 
-### Harpoon - `<leader>a`
-- `<leader>aa` - Add file to harpoon
-- `<leader>al` - List harpoon files
+### AI Tools - `<leader>a`
+All AI-related tools now under one prefix:
+
+**Sidekick:**
+- `<leader>ai` - Toggle Sidekick CLI
+- `<leader>as` - Select CLI tool
+- `<leader>at` - Send "this" to Sidekick
+- `<leader>av` - Send visual selection
+- `<leader>ap` - Select prompt
+- `<leader>ac` - Toggle Claude
+- `<Ctrl-.>` - Switch focus
+
+**CopilotChat:**
+- `<leader>aT` - Toggle CopilotChat
+- `<leader>ax` - Clear/reset chat
+- `<leader>aq` - Quick chat
+- `<leader>aP` - Prompt actions
+
+### Harpoon (Marks/Bookmarks) - `<leader>m`
+- `<leader>ma` - Add file to harpoon
+- `<leader>ml` - List harpoon files
 - `<Alt-1>` to `<Alt-5>` - Jump to harpoon file 1-5
 
 ### Git Operations - `<leader>g`
-All git operations now under one prefix for consistency:
+All git operations consolidated under one prefix:
 
 **Gitsigns (hunk operations):**
 - `<leader>gs` - Stage hunk
@@ -45,12 +63,14 @@ All git operations now under one prefix for consistency:
 - `<leader>gf` - Git log for file
 - `<leader>gg` - Lazygit
 
-## Remaining Conflicts
-- `<leader>gS` used by both gitsigns (stage buffer) and snacks (git status picker)
-  - Recommendation: Move snacks status to `<leader>gx` or similar
-
 ## Benefits
-1. Single mental model: `<leader>g` = all git operations
-2. Harpoon clearly under `<leader>a` 
-3. Removed `<leader>h` group entirely
-4. More consistent naming (capitalized group names)
+1. **`<leader>a`** = All AI tools (Sidekick + CopilotChat)
+2. **`<leader>m`** = Marks/bookmarks (Harpoon) - more intuitive than 'a'
+3. **`<leader>g`** = All git operations (no more split between h and g)
+4. Clear separation between AI, navigation, and git workflows
+5. No more conflicting keymaps
+
+## Mnemonic
+- **a** = AI
+- **m** = Marks (Harpoon bookmarks)
+- **g** = Git
