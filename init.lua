@@ -162,38 +162,41 @@ require('lazy').setup({
         require('telescope').load_extension('yank_history')
         vim.cmd('Telescope yank_history')
       end, { desc = 'Yank History' })
-      vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = 'Search [H]elp' })
-      vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = 'Search [K]eymaps' })
-      vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = 'Search [F]iles' })
+      
+      -- Find/Files
+      vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Find Files' })
+      vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Find by Grep' })
+      vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = 'Find Word' })
+      vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = 'Find Resume' })
+      vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = 'Find Old files (recent)' })
+      vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find Buffers' })
+      vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Find Diagnostics' })
+      
+      -- Search (help, config, etc.)
+      vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = 'Search Help' })
+      vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = 'Search Keymaps' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = 'Search Select Telescope' })
-      vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = 'Search current [W]ord' })
-      vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = 'Search by [G]rep' })
-      vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = 'Search [D]iagnostics' })
-      vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = 'Search [R]esume' })
-      vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = 'Search Recent Files ("." for repeat)' })
-      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-      -- Slightly advanced example of overriding default behavior and theme
+      vim.keymap.set('n', '<leader>sn', function()
+        builtin.find_files { cwd = vim.fn.stdpath 'config', hidden = true }
+      end, { desc = 'Search Neovim files' })
+      
+      -- Keep <leader><leader> as quick buffer access
+      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = 'Find Buffers' })
+      -- Search in buffer
       vim.keymap.set('n', '<leader>/', function()
-        -- You can pass additional configuration to Telescope to change the theme, layout, etc.
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
           winblend = 10,
           previewer = false,
         })
-      end, { desc = '[/] Fuzzily search in current buffer' })
+      end, { desc = 'Search in current buffer' })
 
-      -- It's also possible to pass additional configuration options.
-      --  See `:help telescope.builtin.live_grep()` for information about particular keys
+      -- Search in open files
       vim.keymap.set('n', '<leader>s/', function()
         builtin.live_grep {
           grep_open_files = true,
-          prompt_title = 'Live Grep in Open Files',
+          prompt_title = 'Search in Open Files',
         }
-      end, { desc = '[S]earch [/] in Open Files' })
-
-      -- Shortcut for searching your Neovim configuration files
-      vim.keymap.set('n', '<leader>sn', function()
-        builtin.find_files { cwd = vim.fn.stdpath 'config', hidden = true }
-      end, { desc = '[S]earch [N]eovim files' })
+      end, { desc = 'Search in open files' })
     end,
   },
 

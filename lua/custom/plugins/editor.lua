@@ -202,8 +202,8 @@ return {
     'ThePrimeagen/harpoon',
     branch = 'harpoon2',
     keys = {
-      { '<leader>ma', desc = 'Harpoon Add file' },
-      { '<leader>ml', desc = 'Harpoon List files' },
+      { '<leader>ha', desc = 'Harpoon Add' },
+      { '<leader>hl', desc = 'Harpoon List' },
       { '<m-1>', desc = 'Harpoon file 1' },
       { '<m-2>', desc = 'Harpoon file 2' },
       { '<m-3>', desc = 'Harpoon file 3' },
@@ -214,12 +214,12 @@ return {
       local harpoon = require 'harpoon'
       harpoon:setup()
 
-      vim.keymap.set('n', '<leader>ma', function()
+      vim.keymap.set('n', '<leader>ha', function()
         harpoon:list():add()
-      end, { desc = 'Harpoon Add file' })
-      vim.keymap.set('n', '<leader>ml', function()
+      end, { desc = 'Harpoon Add' })
+      vim.keymap.set('n', '<leader>hl', function()
         harpoon.ui:toggle_quick_menu(harpoon:list())
-      end, { desc = 'Harpoon List files' })
+      end, { desc = 'Harpoon List' })
 
       -- Set <Alt-1>..<Alt-5> as shortcuts to moving to the files
       for _, idx in ipairs { 1, 2, 3, 4, 5 } do

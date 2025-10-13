@@ -1,76 +1,106 @@
-# Keymap Reorganization
+# Keymap Reorganization - Final
 
-## Problem
-The keymap organization was confusing with overlapping prefixes:
-- `<leader>a` group existed but was used by multiple unrelated tools (Harpoon, CopilotChat, Sidekick)
-- `<leader>h` was for Git Hunks (gitsigns)
-- `<leader>g` was for Git commands (fugitive, snacks pickers)
-- Conflicts between git operations in different prefixes
+## Logical Organization
 
-## Solution
-Consolidated keymaps into logical groups:
+All keymaps now follow clear, intuitive naming:
 
-### AI Tools - `<leader>a`
-All AI-related tools now under one prefix:
+### `<leader>f` - Find/Files (Telescope file operations)
+- `ff` - Find Files
+- `fg` - Find by Grep (search in files)
+- `fw` - Find Word (under cursor)
+- `fr` - Find Resume (last search)
+- `fo` - Find Old files (recent files)
+- `fb` - Find Buffers
+- `fd` - Find Diagnostics
+- `<leader><leader>` - Quick buffer access (shortcut)
 
-**Sidekick:**
-- `<leader>ai` - Toggle Sidekick CLI
-- `<leader>as` - Select CLI tool
-- `<leader>at` - Send "this" to Sidekick
-- `<leader>av` - Send visual selection
-- `<leader>ap` - Select prompt
-- `<leader>ac` - Toggle Claude
-- `<Ctrl-.>` - Switch focus
+### `<leader>s` - Search (meta/help searching)
+- `sh` - Search Help
+- `sk` - Search Keymaps
+- `ss` - Search Select (Telescope picker)
+- `sn` - Search Neovim config
+- `sM` - Search Man pages
+- `sC` - Search Colorschemes
+- `s/` - Search in open files
+- `/` - Search in current buffer
 
-**CopilotChat:**
-- `<leader>aT` - Toggle CopilotChat
-- `<leader>ax` - Clear/reset chat
-- `<leader>aq` - Quick chat
-- `<leader>aP` - Prompt actions
+### `<leader>h` - Harpoon
+- `ha` - Harpoon Add
+- `hl` - Harpoon List
+- `Alt-1` to `Alt-5` - Jump to harpoon file 1-5
 
-### Harpoon (Marks/Bookmarks) - `<leader>m`
-- `<leader>ma` - Add file to harpoon
-- `<leader>ml` - List harpoon files
-- `<Alt-1>` to `<Alt-5>` - Jump to harpoon file 1-5
-
-### Git Operations - `<leader>g`
-All git operations consolidated under one prefix:
-
-**Gitsigns (hunk operations):**
-- `<leader>gs` - Stage hunk
-- `<leader>gr` - Reset hunk
-- `<leader>gS` - Stage buffer
-- `<leader>gR` - Reset buffer
-- `<leader>gu` - Undo stage hunk
-- `<leader>gp` - Preview hunk
-- `<leader>gb` - Blame line
-- `<leader>gd` - Diff against index
-- `<leader>gD` - Diff against last commit
+### `<leader>g` - Git (all git operations)
+**Gitsigns (hunks):**
+- `gs` - Git Stage hunk
+- `gr` - Git Reset hunk
+- `gS` - Git Stage buffer
+- `gR` - Git Reset buffer
+- `gu` - Git Undo stage
+- `gp` - Git Preview hunk
+- `gb` - Git Blame
+- `gd` - Git Diff (index)
+- `gD` - Git Diff (last commit)
 
 **Fugitive:**
-- `<leader>gF` - Open Git Fugitive
-- `<leader>gP` - Git push
-- `<leader>gU` - Git pull --rebase
-- `<leader>gT` - Set tracking branch (fugitive buffer only)
+- `gF` - Git Fugitive
+- `gP` - Git Push
+- `gU` - Git pUll --rebase
+- `gT` - Git Tracking (set branch)
 
-**Snacks Git Pickers:**
-- `<leader>gB` - Browse branches
-- `<leader>gl` - Git log
-- `<leader>gL` - Git log line
-- `<leader>gx` - Git status
-- `<leader>gt` - Git stash
-- `<leader>gH` - Git diff/hunks
-- `<leader>gf` - Git log for file
-- `<leader>gg` - Lazygit
+**Pickers:**
+- `gB` - Git Branches
+- `gl` - Git Log
+- `gL` - Git Log Line
+- `gx` - Git Status
+- `gt` - Git sTash
+- `gH` - Git Hunks (diff)
+- `gf` - Git log File
+- `gg` - Git lazygit
+
+### `<leader>a` - AI Tools
+**Sidekick:**
+- `ai` - Sidekick Toggle CLI
+- `as` - Sidekick Select tool
+- `at` - Sidekick send This
+- `av` - Sidekick send Visual
+- `ap` - Sidekick Prompt
+- `ac` - Sidekick Claude
+
+**CopilotChat:**
+- `aT` - CopilotChat Toggle
+- `ax` - CopilotChat Clear
+- `aq` - CopilotChat Quick chat
+- `aP` - CopilotChat Prompts
+
+### Other Groups
+- `<leader>c` - Code (LSP actions, refactor)
+- `<leader>t` - Toggle (options, features)
+- `<leader>b` - Buffer operations
+- `<leader>d` - Debug
+- `<leader>u` - Undo tree
+- `<leader>x` - Trouble (diagnostics)
+- `<leader>q` - Session (quit/save)
+- `<leader>n` - Navbuddy
+- `<leader>z` - Zen mode
+
+## Mnemonics
+- **f** = Find/Files (file operations)
+- **s** = Search (searching help, config, etc.)
+- **h** = Harpoon (quick navigation)
+- **g** = Git (all git operations)
+- **a** = AI (AI assistants)
+- **c** = Code (code actions)
+- **t** = Toggle
+- **b** = Buffer
+- **d** = Debug
+- **u** = Undo
+- **x** = Trouble (diagnostics)
+- **q** = Quit/session
+- **n** = Navigation (navbuddy)
+- **z** = Zen
 
 ## Benefits
-1. **`<leader>a`** = All AI tools (Sidekick + CopilotChat)
-2. **`<leader>m`** = Marks/bookmarks (Harpoon) - more intuitive than 'a'
-3. **`<leader>g`** = All git operations (no more split between h and g)
-4. Clear separation between AI, navigation, and git workflows
-5. No more conflicting keymaps
-
-## Mnemonic
-- **a** = AI
-- **m** = Marks (Harpoon bookmarks)
-- **g** = Git
+1. Clear separation: **f** for finding files, **s** for searching meta-content
+2. Intuitive: **h** = harpoon (not "marks"), **g** = git, **a** = AI
+3. Consistent: All plugins in their logical groups
+4. No conflicts: Each prefix has a clear purpose
