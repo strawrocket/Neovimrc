@@ -48,13 +48,6 @@ return {
         vim.cmd.RustLsp('reloadWorkspace')
       end, 'Reload workspace')
 
-      if client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-        local ok = pcall(vim.lsp.inlay_hint.enable, true, { bufnr = bufnr })
-        if not ok then
-          pcall(vim.lsp.inlay_hint, bufnr, true)
-        end
-      end
-
       if client.server_capabilities.documentFormattingProvider then
         local group = vim.api.nvim_create_augroup('RustLspFormat' .. bufnr, { clear = true })
         vim.api.nvim_create_autocmd('BufWritePre', {
