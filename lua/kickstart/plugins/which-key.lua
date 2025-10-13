@@ -94,13 +94,12 @@ return {
 
       -- Document existing key chains
       spec = {
-        { '<leader>s', group = 'search' },
+        { '<leader>s', group = 'Search' },
         { '<leader>t', group = 'Toggle' },
         { '<leader>b', group = 'Buffer' },
         { 'gr', group = 'LSP actions' },
         { '<leader>d', group = 'Debug' },
-        { '<leader>a', group = 'Harpoon', icon = { icon = '', color = 'red' } },
-        { '<leader>h', group = 'Git Hunk', mode = { 'n', 'v' } },
+        { '<leader>a', group = 'Harpoon', icon = { icon = '', color = 'orange' } },
         { '<leader>g', group = 'Git', mode = { 'n', 'v' } },
         { '<leader>u', group = 'Undo', mode = 'n' },
         { '<leader>x', group = 'Trouble', mode = 'n' },

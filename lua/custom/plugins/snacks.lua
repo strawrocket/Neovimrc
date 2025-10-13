@@ -71,7 +71,7 @@ return {
         desc = 'Undotree',
       },
       {
-        '<leader>gb',
+        '<leader>gB',
         function()
           Snacks.picker.git_branches()
         end,
@@ -99,21 +99,21 @@ return {
         desc = 'Git Log Line',
       },
       {
-        '<leader>gs',
+        '<leader>gx',
         function()
           Snacks.picker.git_status()
         end,
         desc = 'Git Status',
       },
       {
-        '<leader>gS',
+        '<leader>gt',
         function()
           Snacks.picker.git_stash()
         end,
         desc = 'Git Stash',
       },
       {
-        '<leader>gd',
+        '<leader>gH',
         function()
           Snacks.picker.git_diff()
         end,
