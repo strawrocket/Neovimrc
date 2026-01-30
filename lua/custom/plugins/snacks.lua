@@ -49,6 +49,12 @@ return {
         enabled = true,
         timeout = 3000,
       },
+      image = {
+        enabled = true,
+        backend = 'kitty', -- Ghostty supports this
+        max_width = 60,
+        max_height = 20,
+      },
       picker = { enabled = true },
       quickfile = { enabled = false },
       scope = { enabled = false },
