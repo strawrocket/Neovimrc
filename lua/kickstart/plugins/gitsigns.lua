@@ -3,69 +3,28 @@
 -- config. This will add also the recommended keymaps.
 
 return {
-  {
-    'lewis6991/gitsigns.nvim',
-    opts = {
+  'lewis6991/gitsigns.nvim',
+  config = function()
+    local gitsigns = require 'gitsigns'
+    gitsigns.setup {
       signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
+        add = { text = '▐' },
+        change = { text = '▐' },
+        delete = { text = '▐' },
+        topdelete = { text = '▐' },
+        changedelete = { text = '▐' },
+        untracked = { text = '▐' },
       },
-      signcolumn = true,
-      current_line_blame_formatter = '<author>, <summary>',
-      current_line_blame = true,
-      on_attach = function(bufnr)
-        local gitsigns = require 'gitsigns'
-
-        local function map(mode, l, r, opts)
-          opts = opts or {}
-          opts.buffer = bufnr
-          vim.keymap.set(mode, l, r, opts)
-        end
-
-        -- Navigation
-        map('n', ']c', function()
-          if vim.wo.diff then
-            vim.cmd.normal { ']c', bang = true }
-          else
-            gitsigns.nav_hunk 'next'
-          end
-        end, { desc = 'Jump to next git [c]hange' })
-
-        map('n', '[c', function()
-          if vim.wo.diff then
-            vim.cmd.normal { '[c', bang = true }
-          else
-            gitsigns.nav_hunk 'prev'
-          end
-        end, { desc = 'Jump to previous git [c]hange' })
-
-        -- Actions
-        -- visual mode
-        map('v', '<leader>gs', function()
-          gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
-        end, { desc = 'Git [S]tage hunk' })
-        map('v', '<leader>gr', function()
-          gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
-        end, { desc = 'Git [R]eset hunk' })
-        -- normal mode
-        map('n', '<leader>gs', gitsigns.stage_hunk, { desc = 'Git [S]tage hunk' })
-        map('n', '<leader>gr', gitsigns.reset_hunk, { desc = 'Git [R]eset hunk' })
-        map('n', '<leader>gS', gitsigns.stage_buffer, { desc = 'Git [S]tage buffer' })
-        map('n', '<leader>gu', gitsigns.undo_stage_hunk, { desc = 'Git [U]ndo stage hunk' })
-        map('n', '<leader>gR', gitsigns.reset_buffer, { desc = 'Git [R]eset buffer' })
-        map('n', '<leader>gp', gitsigns.preview_hunk, { desc = 'Git [P]review hunk' })
-        map('n', '<leader>gb', gitsigns.blame_line, { desc = 'Git [B]lame line' })
-        map('n', '<leader>gd', gitsigns.diffthis, { desc = 'Git [D]iff against index' })
-        map('n', '<leader>gD', function()
-          gitsigns.diffthis '@'
-        end, { desc = 'Git [D]iff against last commit' })
-        -- Toggles
-        map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' })
-        map('n', '<leader>tD', gitsigns.preview_hunk_inline, { desc = '[T]oggle git show [D]eleted' })
-      end,
-    },
-  },
+      signcolumn = true, -- toggle with `:Gitsigns toggle_signs`
+      linehl = false, -- toggle with `:Gitsigns toggle_linehl`
+      numhl = false, -- toggle with `:Gitsigns toggle_nunhl`
+      word_diff = false, -- toggle with `:Gitsigns toggle_word_diff`
+      sign_priority = 9,
+      watch_gitdir = {
+        interval = 1000,
+      },
+      attach_to_untracked = false,
+    }
+  end,
+  event = { 'BufReadPre', 'BufNewFile' },
 }

@@ -27,6 +27,7 @@ return {
     priority = 1000,
   },
   { 'bluz71/vim-moonfly-colors', name = 'moonfly', lazy = false, priority = 1000 },
+  { 'miikanissi/modus-themes.nvim', priority = 1000 },
   {
     'sainnhe/gruvbox-material',
     lazy = false,

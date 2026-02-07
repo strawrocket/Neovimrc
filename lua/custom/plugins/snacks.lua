@@ -51,9 +51,9 @@ return {
       },
       image = {
         enabled = true,
-        backend = 'kitty', -- Ghostty supports this
         max_width = 60,
         max_height = 20,
+        froce = true,
       },
       picker = { enabled = true },
       quickfile = { enabled = false },
@@ -148,7 +148,122 @@ return {
         desc = 'Search man pages',
       },
 
-      -- find
+      -- Find/Files pickers (migrated from telescope)
+      {
+        '<leader>ff',
+        function()
+          Snacks.picker.files()
+        end,
+        desc = 'Find Files',
+      },
+      {
+        '<leader>fg',
+        function()
+          Snacks.picker.grep()
+        end,
+        desc = 'Find by Grep',
+      },
+      {
+        '<leader>fw',
+        function()
+          Snacks.picker.grep_word()
+        end,
+        desc = 'Find Word',
+      },
+      {
+        '<leader>fr',
+        function()
+          Snacks.picker.resume()
+        end,
+        desc = 'Find Resume',
+      },
+      {
+        '<leader>fo',
+        function()
+          Snacks.picker.recent()
+        end,
+        desc = 'Find Old files (recent)',
+      },
+      {
+        '<leader>fb',
+        function()
+          Snacks.picker.buffers()
+        end,
+        desc = 'Find Buffers',
+      },
+      {
+        '<leader>fd',
+        function()
+          Snacks.picker.diagnostics()
+        end,
+        desc = 'Find Diagnostics',
+      },
+
+      -- Search (help, config, etc.)
+      {
+        '<leader>sh',
+        function()
+          Snacks.picker.help()
+        end,
+        desc = 'Search Help',
+      },
+      {
+        '<leader>sk',
+        function()
+          Snacks.picker.keymaps()
+        end,
+        desc = 'Search Keymaps',
+      },
+      {
+        '<leader>ss',
+        function()
+          Snacks.picker.pickers()
+        end,
+        desc = 'Search Select Picker',
+      },
+      {
+        '<leader>sn',
+        function()
+          Snacks.picker.files({ cwd = vim.fn.stdpath('config') })
+        end,
+        desc = 'Search Neovim files',
+      },
+
+      -- Quick buffer access
+      {
+        '<leader><leader>',
+        function()
+          Snacks.picker.buffers()
+        end,
+        desc = 'Find Buffers',
+      },
+
+      -- Search in buffer
+      {
+        '<leader>/',
+        function()
+          Snacks.picker.lines()
+        end,
+        desc = 'Search in current buffer',
+      },
+
+      -- Search in open files
+      {
+        '<leader>s/',
+        function()
+          Snacks.picker.grep_buffers()
+        end,
+        desc = 'Search in open files',
+      },
+
+      -- Yank history (using yanky plugin integration if available)
+      {
+        '<leader>p',
+        function()
+          Snacks.picker.yank_history()
+        end,
+        desc = 'Yank History',
+      },
     },
     init = function()
       vim.api.nvim_create_autocmd('User', {

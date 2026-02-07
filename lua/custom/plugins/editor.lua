@@ -116,27 +116,19 @@ return {
       })
     end,
   },
-
+  -- lazy.nvim
   {
-    'folke/zen-mode.nvim',
-    keys = {
-      { '<leader>z', desc = 'Zen Mode' },
+    'lowitea/aw-watcher.nvim',
+    opts = { -- required, but can be empty table: {}
+      -- add any options here
+      -- for example:
+      aw_server = {
+        host = '127.0.0.1',
+        port = 5600,
+      },
     },
-    config = function()
-      vim.keymap.set('n', '<leader>z', function()
-        require('zen-mode').setup {
-          window = {
-            width = 90,
-            options = {},
-          },
-        }
-        require('zen-mode').toggle()
-        vim.wo.wrap = false
-        vim.wo.number = true
-        vim.wo.rnu = false
-      end, { desc = 'Zen Mode' })
-    end,
   },
+
   {
     'chentoast/marks.nvim',
     event = 'VeryLazy',
@@ -310,12 +302,5 @@ return {
         end,
       }):map '<leader>um'
     end,
-  },
-  {
-    'm4xshen/hardtime.nvim',
-    lazy = false,
-    enabled = false,
-    dependencies = { 'MunifTanjim/nui.nvim' },
-    opts = {},
   },
 }
