@@ -55,7 +55,11 @@ return {
         max_height = 20,
         froce = true,
       },
-      picker = { enabled = true },
+      picker = { 
+        enabled = true,
+        -- Disable treesitter highlighting in picker to avoid vim parser issues
+        treesitter = false,
+      },
       quickfile = { enabled = false },
       scope = { enabled = false },
       scroll = { enabled = false },
