@@ -165,18 +165,18 @@ require('lazy').setup({
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
-      require('mini.surround').setup({
+      require('mini.surround').setup {
         -- Use different keymaps to avoid conflicts with marks.nvim
         mappings = {
-          add = 'sa',           -- Add surrounding
-          delete = 'sd',        -- Delete surrounding
-          find = 'sf',          -- Find right surrounding
-          find_left = 'sF',     -- Find left surrounding
-          highlight = 'sh',     -- Highlight surrounding
-          replace = 'sr',       -- Replace surrounding
+          add = 'sa', -- Add surrounding
+          delete = 'sd', -- Delete surrounding
+          find = 'sf', -- Find right surrounding
+          find_left = 'sF', -- Find left surrounding
+          highlight = 'sh', -- Highlight surrounding
+          replace = 'sr', -- Replace surrounding
           update_n_lines = 'sn', -- Update `n_lines`
         },
-      })
+      }
 
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
@@ -215,7 +215,7 @@ require('lazy').setup({
     },
     config = function(_, opts)
       -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-      require('nvim-treesitter.config').setup(opts)
+      require('nvim-treesitter.configs').setup(opts)
     end,
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
