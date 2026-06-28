@@ -62,13 +62,21 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'markdown',
-  callback = function()
-    vim.opt_local.conceallevel = 2
-    vim.opt_local.concealcursor = 'nc'
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('HarperLsDiagnosticsDisable', { clear = true }),
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client.name == 'harper_ls' then
+      -- Use the NAMESPACE ID as the second argument to config
+      -- vim.diagnostic.config({
+      --     virtual_text = false,
+      --     signs = false,
+      --     underline = false,
+      -- }, client.namespace)
+    end
   end,
 })
+
 -- vim.api.nvim_create_autocmd('VimEnter', {
 --   pattern = '',
 --   callback = function()

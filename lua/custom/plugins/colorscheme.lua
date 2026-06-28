@@ -22,14 +22,14 @@ return {
     end,
   },
   {
-    'Zeioth/neon.nvim',
-    opts = {
-      dim_inactive = false,
-      styles = {
-        comments = { italic = true },
-        keywords = { italic = true },
-      },
-    },
+    'webhooked/kanso.nvim',
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    'dgox16/oldworld.nvim',
+    lazy = false,
+    priority = 1000,
   },
   {
     'scottmckendry/cyberdream.nvim',

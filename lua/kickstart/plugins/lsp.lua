@@ -90,7 +90,7 @@ return {
         -- Jump to the definition of the word under your cursor.
         --  This is where a variable was first declared, or where a function is defined, etc.
         --  To jump back, press <C-t>.
-        map('grd', function() Snacks.picker.lsp_definitions() end, '[G]oto [D]efinition')
+        map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
         -- WARN: This is not Goto Definition, this is Goto Declaration.
         --  For example, in C this would take you to the header.
@@ -150,7 +150,17 @@ return {
             end,
           })
         end
-
+        vim.lsp.config.harperls = {
+          default_config = {
+            cmd = { 'harperls' },
+            filetypes = { 'markdown', 'text' },
+            root_dir = require('lspconfig.util').find_git_ancestor,
+            settings = {},
+          },
+          docs = {
+            description = 'Language server for Harper.',
+          },
+        }
         -- The following code creates a keymap to toggle inlay hints in your
         -- code, if the language server you are using supports them
         --
@@ -168,7 +178,7 @@ return {
     vim.diagnostic.config {
       severity_sort = true,
       float = { border = 'rounded', source = 'if_many' },
-      underline = { severity = vim.diagnostic.severity.ERROR },
+      underline = true,
       signs = vim.g.have_nerd_font and {
         text = {
           [vim.diagnostic.severity.ERROR] = '󰅚 ',
@@ -217,16 +227,14 @@ return {
       -- But for many setups, the LSP (`ts_ls`) will work just fine
       -- ts_ls = {},
       --
-      pyright = {
-        -- cmd = { 'pyright-langserver', '--stdio' },
+
+      basedpyright = {
         filetypes = { 'python' },
         settings = {
-          python = {
+          basedpyright = {
             analysis = {
-              typeCheckingMode = 'basic',
-              autoImportCompletions = true,
-              useLibraryCodeForTypes = true,
-              diagnosticMode = 'workspace',
+              -- Fixes crashes by only scanning files you actually open
+              diagnosticMode = 'openFilesOnly',
             },
           },
         },
@@ -241,6 +249,15 @@ return {
           },
         },
       },
+
+      -- harper_ls = {
+      --   cmd = { 'harper', 'lsp' },
+      --   filetypes = { 'text', 'markdown' },
+      --   lint = {
+      --     ignorePaths = { '*.py', '*.lua' }, -- Or use directories like "src/**"
+      --   },
+      --   excludePatterns = { '*.py', '*.lua' },
+      -- },
 
       lua_ls = {
         -- cmd = { ... },
@@ -258,7 +275,9 @@ return {
       },
 
       marksman = {
+        cmd = { 'marksman', 'server' },
         filetypes = { 'markdown' },
+        root_dir = require('lspconfig').util.root_pattern('.git', '.obsidian', 'notes', 'Medicine'),
         settings = {
           marksman = {
             diagnostics = {
@@ -266,6 +285,7 @@ return {
               lint = true,
               lintOnSave = true,
               lintOnChange = true,
+              disable = { 'MD041', 'MD013', 'MD032' },
             },
             completion = {
               enable = true,
@@ -275,7 +295,6 @@ return {
         },
       },
     }
-
     -- Ensure the servers and tools above are installed
     --
     -- To check the current status of installed tools and/or manually install
@@ -297,7 +316,7 @@ return {
 
     require('mason-lspconfig').setup {
       ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
-      automatic_installation = false,
+      automatic_installation = true,
       handlers = {
         function(server_name)
           if server_name == 'rust_analyzer' then
