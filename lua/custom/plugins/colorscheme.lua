@@ -62,4 +62,77 @@ return {
       -- vim.cmd 'colorscheme vague'
     end,
   },
+  {
+    'folke/tokyonight.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {
+      style = 'night',
+      styles = {
+        comments = { italic = true },
+      },
+    },
+  },
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    lazy = false,
+    priority = 1000,
+    opts = {
+      flavour = 'mocha',
+      transparent_background = false,
+      term_colors = true,
+      styles = {
+        comments = { 'italic' },
+      },
+    },
+  },
+  {
+    'EdenEast/nightfox.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('nightfox').setup {
+        options = {
+          styles = { comments = 'italic' },
+        },
+      }
+    end,
+  },
+  {
+    'nyoom-engineering/oxocarbon.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.opt.background = 'dark'
+      vim.cmd 'colorscheme oxocarbon'
+    end,
+  },
+  {
+    'rebelot/kanagawa.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {
+      compile = true,
+      theme = 'dragon',
+      background = { dark = 'dragon' },
+    },
+  },
+  {
+    'AlexvZyl/nordic.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {
+      bold_keywords = true,
+      italic_comments = true,
+    },
+  },
+  {
+    'Mofiqul/dracula.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {
+      italic_comment = true,
+    },
+  },
 }
